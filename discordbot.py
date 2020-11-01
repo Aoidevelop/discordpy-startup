@@ -1,13 +1,10 @@
-import discord
+from discord.ext import commands
 from janome.tokenizer import Tokenizer
 import os
-imoprt traceback
-
 t = Tokenizer()
 token = os.environ['DISCORD_BOT_TOKEN']
 bot = commands.Bot(command_prefix='/')
 
-client = discord.Client()
 prefix = '&'
 ngword = []
 users = {}
@@ -16,7 +13,7 @@ users = {}
 print('起動しました')
 
 
-@client.event
+@bot.event
 async def on_message(message):
     if message.author.bot:
         return
@@ -43,7 +40,7 @@ async def on_message(message):
         if cmd[0] == prefix + 'users':
             ans = ''
             for u, c in users.items():
-                ans += client.get_user(u).name + 'さん '+ str(c) + '回'
+                ans += bot.get_user(u).name + 'さん '+ str(c) + '回'
             await message.channel.send(ans)
     else:
         tokens = t.tokenize(message.content, wakati=True)
