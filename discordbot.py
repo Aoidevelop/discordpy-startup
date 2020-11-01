@@ -1,4 +1,5 @@
 from discord.ext import commands
+import discord
 from janome.tokenizer import Tokenizer
 import os
 t = Tokenizer()
