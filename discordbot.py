@@ -30,7 +30,7 @@ async def on_message(message):
             return
         if message.content.split()[0] == prefix + 'addword':
             ngwords.append(message.content.split()[1])
-            await message.channel.send(message.content + 'をngワードに追加しました')
+            await message.channel.send(message.content.split()[1] + 'をngワードに追加しました')
         if message.content.split()[0] == prefix + 'wordlist':
             await message.channel.send(ngwords)
         if message.content.split()[0] == prefix + 'violator' and len(message.content.split()) == 2:
