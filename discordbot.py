@@ -5,10 +5,13 @@ token = os.environ['DISCORD_BOT_TOKEN']  # トークンを入力してくださ�
 
 client = discord.Client()
 
-ngwords = list()
 prefix = ('&')
 users = {}
-
+path = './workflows/ngword.txt'
+ngwords = []
+with open(path,'r') as file:
+    for f in file:
+        ngwords.append(f)
 
 @client.event
 async def on_message(message):
@@ -31,6 +34,10 @@ async def on_message(message):
         if message.content.split()[0] == prefix + 'addword':
             ngwords.append(message.content.split()[1])
             await message.channel.send(message.content.split()[1] + 'をngワードに追加しました')
+            with open(path, 'r') as f:
+                if message.content.split()[1] not in f.read():
+                    with open(path, 'a') as f:
+                        f.write('\n' + message.content.split()[1])
         if message.content.split()[0] == prefix + 'wordlist':
             await message.channel.send(ngwords)
         if message.content.split()[0] == prefix + 'violator' and len(message.content.split()) == 2:
