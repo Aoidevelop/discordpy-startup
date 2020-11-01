@@ -21,11 +21,11 @@ async def on_message(message):
     if message.content[0] == prefix:
         cmd = message.content.split()
         if cmd[0] == prefix + 'help':
-            await message.channel.send('addword:NGワードを追加します'
-                                       'delword:NGワードを削除します'
-                                       'listword:NGワードの一覧を表示します'
-                                       'users:NGワードを発言したユーザーを表示します'
-                                       'help:このヘルプを表示します')
+            await message.channel.send('addword:NGワードを追加します\n'
+                                       'delword:NGワードを削除します\n'
+                                       'listword:NGワードの一覧を表示します\n'
+                                       'users:NGワードを発言したユーザーを表示します\n'
+                                       'help:このヘルプを表示します\n')
         if cmd[0] == prefix + 'addword':
             for arg in cmd[1::]:
                 if arg not in ngword:
