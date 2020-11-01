@@ -30,6 +30,9 @@ async def on_message(message):
         if message.content.split()[0] == prefix + 'addword':
             ngwords.append(message.content.split()[1])
             await message.channel.send(message.content.split()[1] + 'をngワードに追加しました')
+        if message.content.split()[0] == prefix + 'delword':
+            ngwords.remove(message.content.split()[1])
+            await  message.channel.send(message.content.split()[1] + ('をngワードから削除しました'))
         if message.content.split()[0] == prefix + 'wordlist':
             await message.channel.send(ngwords)
         if message.content.split()[0] == prefix + 'violator' and len(message.content.split()) == 2:
@@ -48,7 +51,8 @@ async def on_message(message):
                                         'wordlist:ngワードの一覧を表示します\n'+
                                         'violator <number>指定した回数以上ngワードを言った人を表示します。何も指定しないと0回以上になります。\n'+
                                         'purge:ngワードを言った回数をリセットします\n'+
-                                        'help:helpを表示します。')
+                                        'help:helpを表示します。\n'+
+                                        'delword <text>:ngワードを削除します')
 
 
 client.run(token)
