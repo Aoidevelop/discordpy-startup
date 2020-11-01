@@ -1,6 +1,7 @@
 import discord
-
-token = 'DISCORD_BOT_TOKEN'  # トークンを入力してください。
+import os
+import traceback
+token = os.environ['DISCORD_BOT_TOKEN']  # トークンを入力してください。
 
 client = discord.Client()
 
