@@ -1,13 +1,17 @@
 import discord
 from janome.tokenizer import Tokenizer
+import os
+imoprt traceback
 
 t = Tokenizer()
+token = os.environ['DISCORD_BOT_TOKEN']
+bot = commands.Bot(command_prefix='/')
 
 client = discord.Client()
 prefix = '&'
 ngword = []
 users = {}
-token = 'DISCORD_BOT_TOKEN'
+
 
 print('起動しました')
 
@@ -53,4 +57,4 @@ async def on_message(message):
                 else:
                     users[message.author.id] += 1
 
-
+bot.run(token)
